@@ -23,7 +23,7 @@ export default function MyChats({OpenGrpBox ,loading ,setloading }) {
                 if(user!==null){
 
                     setloading(true);
-                    const { data } = await axios.get(`/api/chat/get/mychats/${user && user._id}`);
+                    const { data } = await axios.get(`https://chatify-backend.vercel.app/api/chat/get/mychats/${user && user._id}`);
                     setchats(data)
                     setloading(false);
 
@@ -55,7 +55,7 @@ export default function MyChats({OpenGrpBox ,loading ,setloading }) {
                 ):
                 (
 
-                    <div className="my-chats-box h-[90%] overflow-scroll p-2  bg-gray-100">
+                    <div className="my-chats-box max-h-[70%] overflow-scroll p-2  bg-gray-100">
                         {
                             chats &&
                             chats.map((ele, i) => {

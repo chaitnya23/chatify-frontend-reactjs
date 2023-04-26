@@ -12,7 +12,7 @@ import Profile from '../../components/Profile';
 import BeatLoader from "react-spinners/BeatLoader";
 import { useRef } from 'react';
 
-const socket = io.connect("http://localhost:4000");
+const socket = io.connect("https://chatify-backend.vercel.app");
 
 export default function MessageBox({ setnotifications, notifications }) {
 
@@ -70,13 +70,13 @@ export default function MessageBox({ setnotifications, notifications }) {
 
         socket.on('message-receive', (payload) => {
 
+            
             const users = payload.chat.users;
 
+            // console.log(payload.chat.users.includes(user));
+            console.log(payload ,user);
 
-            console.log(payload.chat.users.includes(user));
-
-
-            if (selectedChat && selectedChat._id === payload.chat._id) {
+            if (selectedChat && selectedChat._id === payload.chat._id ) {
 
                 setMessages((Messages) => {
                     return [...Messages, { user: payload.sender, message: payload.message }];
@@ -93,7 +93,6 @@ export default function MessageBox({ setnotifications, notifications }) {
                     })
                 }
 
-
             }
         })
     }, [socket, selectedChat])
@@ -103,21 +102,23 @@ export default function MessageBox({ setnotifications, notifications }) {
     // send message function
     const sendMessage = async () => {
 
+        console.log("send msg");
 
         if (inputMessage === "") {
             return;
         }
         try {
 
-            const { data } = await axios.post(`/api/chat/add/message/${selectedChat && selectedChat._id}`, {
+            setMessages([...Messages, { user, message: inputMessage }]);
+            const { data } = await axios.post(`https://chatify-backend.vercel.app/api/chat/add/message/${selectedChat && selectedChat._id}`, {
                 user,
                 message: inputMessage
             })
 
-            setMessages([...Messages, { user, message: inputMessage }]);
             socket.emit("message-sent", { sender: user, message: inputMessage, chat: selectedChat });
             setinputMessage("");
-
+            
+            console.log(Messages);
         } catch (error) {
 
             console.log("error in sending msg", error);
@@ -170,7 +171,7 @@ export default function MessageBox({ setnotifications, notifications }) {
                                     </div>}
 
                                 </div>
-                                <div className="send-input-box p-1 my-3 text-lg flex items-center gap-2  bg-gray-100 border">
+                                <div className="send-input-box p-1 my-1 text-lg flex items-center gap-2  bg-gray-100 border">
 
                                     <input
                                         type="text"

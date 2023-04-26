@@ -74,7 +74,7 @@ export default function Singup() {
             return;
         }
         try {
-            const { data } = await axios.post("/api/auth/signup", {
+            const { data } = await axios.post("https://chatify-backend.vercel.app/api/auth/signup", {
                 ...userDetail, profilePic
             })
             toast("sign up successfull");

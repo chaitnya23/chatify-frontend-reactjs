@@ -21,7 +21,7 @@ export default function TopBar({ opensideDrawer, notifications ,setnotifications
     const logout = async () => {
 
         try {
-            await axios.get('/api/auth/logout');
+            await axios.get('https://chatify-backend.vercel.app/api/auth/logout');
             navigate("/auth");
         } catch (error) {
             console.log("error in logging out");

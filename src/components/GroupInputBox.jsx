@@ -38,7 +38,7 @@ export default function GroupInputBox({ closeGrpbox }) {
 
         try {
             setloading(true);
-            const { data } = await axios.get(`/api/user/search/${e.target.value}`);
+            const { data } = await axios.get(`https://chatify-backend.vercel.app/api/user/search/${e.target.value}`);
             setsearchResult(data);
             setloading(false);
 
@@ -67,7 +67,7 @@ export default function GroupInputBox({ closeGrpbox }) {
 
         try {
 
-            const { data } = await axios.post("/api/chat/group/create", { name: groupName, members: selectedMembers, admin: user })
+            const { data } = await axios.post("https://chatify-backend.vercel.app/api/chat/group/create", { name: groupName, members: selectedMembers, admin: user })
             console.log(data);
             closeGrpbox();
             toast("you created a new group");

@@ -13,7 +13,7 @@ export default function SideDrawer({ close }) {
 
         try {
 
-            const { data } = await axios.get(`/api/user/search/${search}`);
+            const { data } = await axios.get(`https://chatify-backend.vercel.app/api/user/search/${search}`);
             setsearchResult(data);
 
         } catch (error) {

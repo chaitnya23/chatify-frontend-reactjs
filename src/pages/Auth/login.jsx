@@ -18,7 +18,7 @@ export default function Login() {
     const postLogin = async () => {
 
         try {
-            const { data } = await axios.post("/api/auth/login", {
+            const { data } = await axios.post("https://chatify-backend.vercel.app/api/auth/login", {
                 userName, password
             });
 

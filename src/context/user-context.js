@@ -20,7 +20,7 @@ export default function AppContext({children}) {
         const getUser = async()=>{
             try {
                 
-                const {data} = await  axios.get('/api/user');
+                const {data} = await  axios.get('https://chatify-backend.vercel.app/api/user');
                 setuser(data);
                 console.log(data);
                
