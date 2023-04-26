@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+body{
+  background: url('../public/bg-img.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow-x: hidden;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.auth-btns{
+  @apply w-1/2 text-center py-1 rounded-full cursor-pointer
+}
+.login-btn{
+
+  @apply w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 rounded h-10 my-2 text-lg
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.input-box input{
+  @apply w-full outline-none border-2 rounded p-2 mb-2;
+}
+
+.user-box{
+  @apply rounded p-1 flex gap-2 items-center py-2 bg-gray-200 hover:bg-blue-400 hover:text-white cursor-pointer my-3;
+}
+
+.drawer-content{
+  animation: sideDrawerAnimation .6s ease 0s ;
+ 
+}
+
+@keyframes sideDrawerAnimation {
+  
+  from{
+    margin-left: -70%;
+  }to{
+    margin-left: 0.5rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.all-messages-container{
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.all-messages-container::-webkit-scrollbar{
+  display: none;
 }
 
-.App-link {
-  color: #61dafb;
+
+.users-result{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  
+}
+.users-result::-webkit-scrollbar{
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.my-chats-box{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  
+}
+.my-chats-box::-webkit-scrollbar{
+  display: none;
+}
+
+
+.loading-box div{
+
+  animation: loading-animation 1s linear infinite alternate ;
+}
+
+@keyframes loading-animation {
+  
+  from{
+    background-color: hsl(200, 20%, 80%);
+
+  }to{
+    
+    background-color: hsl(200, 20%, 95%);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.notification-counter{
+  @apply rounded-full absolute h-6 left-3 -top-2 w-6 bg-red-500 text-center text-white font-bold;
+  animation: notify-animate .3s linear 1 alternate ;
+
+}
+
+@keyframes notify-animate {
+  
+  from{
+    transform: scale(0);
+  }to{
+    transform: scale(1.2);
   }
 }
